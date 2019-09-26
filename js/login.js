@@ -130,3 +130,17 @@ var options = {
 };
 var lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
 lockPasswordless.show();
+
+//parse hash on page load
+$(document).ready(function(){
+    webAuth.parseHash({hash: window.location.hash}, function(err, authResult) {
+        if (err) {
+            return console.log(err);
+        }
+
+        webAuth.client.userInfo(authResult.accessToken, function(err, user) {
+            // Now you have the user's information
+        });
+    });
+});
+

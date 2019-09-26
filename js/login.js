@@ -139,6 +139,8 @@ lockPasswordless.show();
 const webAuth = new auth0.WebAuth({
     domain:       'insan.eu.auth0.com',
     clientID:     'JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34'
+    redirectUri: 'https://insan.fr',
+    responseType: 'token id_token'
 });
 
 //parse hash on page load
@@ -146,13 +148,13 @@ $(document).ready(function(){
     console.log('hash :',window.location.hash);
     if(window.location.hash){
         webAuth.parseHash({hash: window.location.hash}, function(err, authResult) {
-            console.log(authResult);
+            console.log("authResult: ",authResult);
             if (err) {
-                return console.log(err);
+                return console.log("err: ",err);
             }
 
             webAuth.client.userInfo(authResult.accessToken, function(err, user) {
-                // Now you have the user's information
+                console.log("user: ",user)
             });
         });
     }

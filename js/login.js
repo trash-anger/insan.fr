@@ -5,7 +5,8 @@ const options = {
     responseType: 'token id_token',
     auth: {
         redirectUrl: 'https://insan.fr',
-        responseType: 'token id_token'
+        responseType: 'token id_token',
+        params: {state: 'foo'}
     },
     params: {
         scope: 'openid email'

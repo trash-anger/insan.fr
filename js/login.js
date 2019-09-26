@@ -1,5 +1,5 @@
 document.body.style.backgroundColor = "#2B2B2B";
-var options = {
+const options = {
     container: 'root',
     passwordlessMethod: "link",
     responseType: 'token id_token',
@@ -128,12 +128,14 @@ var options = {
         labeledSubmitButton: false
     }
 };
+
 var lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
 lockPasswordless.show();
 
 //parse hash on page load
 $(document).ready(function(){
     webAuth.parseHash({hash: window.location.hash}, function(err, authResult) {
+        console.log(authResult);
         if (err) {
             return console.log(err);
         }

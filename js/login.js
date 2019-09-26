@@ -1,7 +1,7 @@
 document.body.style.backgroundColor = "#2B2B2B";
 const options = {
     container: 'root',
-    passwordlessMethod: "code",
+    passwordlessMethod: "link",
     responseType: 'token id_token',
     auth: {
         redirectUrl: 'https://insan.fr',
@@ -143,7 +143,7 @@ const webAuth = new auth0.WebAuth({
 
 //parse hash on page load
 $(document).ready(function(){
-    console.log('hash :',window.location);
+    console.log('hash :',window.location.hash);
     if(window.location.hash){
         webAuth.parseHash({hash: window.location.hash}, function(err, authResult) {
             console.log(authResult);

@@ -138,7 +138,7 @@ lockPasswordless.show();
 
 const webAuth = new auth0.WebAuth({
     domain:       'insan.eu.auth0.com',
-    clientID:     'JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34'
+    clientID:     'JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34',
     redirectUri: 'https://insan.fr',
     responseType: 'token id_token'
 });

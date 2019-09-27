@@ -8,7 +8,7 @@ const config = {
     responseType: 'token id_token',
     scope: "openid profile email https://mydomain/roles read:current_user create:current_user_metadata update:current_user_metadata"
 };
-// const webAuth = new auth0.WebAuth(config);
+const webAuth = new auth0.WebAuth(config);
 
 
 const options = {

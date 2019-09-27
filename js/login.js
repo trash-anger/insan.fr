@@ -160,7 +160,8 @@ $(document).ready(function () {
                 }
             });
         } else {
-            alert('Go fuck yourself : ' + err + hash);
+            alert('Go fuck yourself : ' + err );
+            console.error(err)
         }
 
     });

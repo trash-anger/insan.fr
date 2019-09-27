@@ -144,7 +144,7 @@ const lockPasswordless = new Auth0LockPasswordless(config.clientID, config.domai
 lockPasswordless.show();
 
 $(document).ready(function(){
-    var hash = lockPasswordless.parseHash(window.location.hash);
+    var hash = webAuth.parseHash(window.location.hash);
 
     if (hash && hash.error) {
         alert('There was an error: ' + hash.error + '\n' + hash.error_description);

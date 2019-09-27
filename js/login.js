@@ -5,7 +5,7 @@ const config = {
     clientID: 'JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34',
     audience: "https://insan.eu.auth0.com/api/v2/",
     redirectUri: 'https://insan.fr',
-    responseType: 'token id_token',
+    responseType: 'token', //id_token
     scope: "openid profile email https://mydomain/roles read:current_user create:current_user_metadata update:current_user_metadata"
 };
 const webAuth = new auth0.WebAuth(config);
@@ -153,14 +153,14 @@ $(document).ready(function () {
             localStorage.setItem('id_token', hash.id_token);
             //retrieve profile
             lockPasswordless.getProfile(hash.id_token, function (err, profile) {
-                if (err){
+                if (err) {
                     //handle err
                 } else {
                     //use user profile
                 }
             });
         } else {
-            alert('Go fuck yourself : ' + err );
+            alert('Go fuck yourself : ' + err);
             console.error(err)
         }
 

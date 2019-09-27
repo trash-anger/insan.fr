@@ -131,7 +131,7 @@ const options = {
         mfaSubmitLabel: "S'identifier",
         mfaCodeErrorHint: 'Utilisez des numéros %d',
         showPassword: 'Montrer le mot de passe',
-        signUpTerms: "En t'inscrivant, tu acceptes mes conditions d'utilisation et ma politique de confidentialité."
+        signUpTerms: "En t'inscrivant, tu acceptes mes <a href='/cgu' target='_new'>conditions d'utilisation</a> et ma <a href='/privacy' target='_new'>politique de confidentialité.</a>"
     },
     theme: {
         logo: 'https://ohmyz.sh/img/OMZLogo_BnW.png',

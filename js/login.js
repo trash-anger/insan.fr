@@ -1,16 +1,22 @@
 document.body.style.backgroundColor = "#2B2B2B";
+
+const config = {
+    domain: 'insan.eu.auth0.com',
+    clientID: 'JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34',
+    audience: "https://insan.eu.auth0.com/api/v2/",
+    redirectUri: 'https://insan.fr',
+    responseType: 'token id_token',
+    scope: "openid profile email https://mydomain/roles read:current_user create:current_user_metadata update:current_user_metadata"
+};
+const webAuth = new auth0.WebAuth(config);
+
+
+
 const options = {
+    hashCleanup: false,
     container: 'root',
     passwordlessMethod: "link",
     responseType: 'token id_token',
-    auth: {
-        redirectUrl: 'https://insan.fr',
-        responseType: 'token id_token',
-        params: {state: 'foo'}
-    },
-    params: {
-        scope: 'openid email'
-    },
     languageDictionary: {
         error: {
             forgotPassword: {
@@ -130,34 +136,29 @@ const options = {
     theme: {
         logo: 'https://ohmyz.sh/img/OMZLogo_BnW.png',
         primaryColor: '#d2d2d2',
-        labeledSubmitButton: false
+        labeledSubmitButton: true
     }
 };
+
+webAuth.authorize(options);
 
 const lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
 lockPasswordless.show();
 
-const webAuth = new auth0.WebAuth({
-    domain: 'insan.eu.auth0.com',
-    clientID: 'JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34',
-    redirectUri: 'https://insan.fr',
-    responseType: 'token id_token'
-});
+
 
 //parse hash on page load
 $(document).ready(function () {
     console.log('hash :', window.location.hash);
-    if (window.location.hash != "") {
-        webAuth.parseHash(function (err, authResult) {
-            console.log("authResult: ", authResult);
-            if (err) {
-                return console.log("err: ", err);
-            }
+    webAuth.parseHash(function (err, authResult) {
+        console.log("authResult: ", authResult);
+        if (err) {
+            return console.log("err: ", err);
+        }
 
-            webAuth.client.userInfo(authResult.accessToken, function (err, user) {
-                console.log("user: ", user)
-            });
+        webAuth.client.userInfo(authResult.accessToken, function (err, user) {
+            console.log("user: ", user)
         });
-    }
+    });
 });
 

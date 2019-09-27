@@ -143,10 +143,10 @@ const options = {
 const lockPasswordless = new Auth0LockPasswordless(config.clientID, config.domain, options);
 lockPasswordless.show();
 
-// $(document).ready(function () {
-//     webAuth.parseHash(window.location.hash, function () {
-//         console.log(hash)
-//     });
+$(document).ready(function () {
+    webAuth.parseHash(window.location.hash, function () {
+        console.log(hash)
+    });
 
     // if (hash && hash.error) {
     //     alert('There was an error: ' + hash.error + '\n' + hash.error_description);
@@ -162,5 +162,4 @@ lockPasswordless.show();
     //         }
     //     });
     // }
-// });
-//
+});

@@ -140,7 +140,7 @@ const options = {
     }
 };
 
-const lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
+const lockPasswordless = new Auth0LockPasswordless(config.clientID, config.domain, options);
 lockPasswordless.show();
 
 //parse hash on page load
@@ -158,3 +158,22 @@ $(document).ready(function () {
     });
 });
 
+
+$(document).ready(function(){
+    var hash = lockPasswordless.parseHash(window.location.hash);
+
+    if (hash && hash.error) {
+        alert('There was an error: ' + hash.error + '\n' + hash.error_description);
+    } else if (hash && hash.id_token) {
+        //use id_token for retrieving profile.
+        localStorage.setItem('id_token', hash.id_token);
+        //retrieve profile
+        lock.getProfile(hash.id_token, function (err, profile) {
+            if (err){
+                //handle err
+            } else {
+                //use user profile
+            }
+        });
+    }
+});

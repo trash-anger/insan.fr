@@ -144,7 +144,7 @@ const lockPasswordless = new Auth0LockPasswordless(config.clientID, config.domai
 lockPasswordless.show();
 
 $(document).ready(function () {
-    webAuth.parseHash(window.location.hash, function (err, hash) {
+    webAuth.parseHash({hash: window.location.hash}, function (err, hash) {
         console.log(hash)
         if (hash && hash.error) {
             alert('There was an error: ' + hash.error + '\n' + hash.error_description);
@@ -160,7 +160,7 @@ $(document).ready(function () {
                 }
             });
         } else {
-            alert('Go fuck yourself : ' + err);
+            alert('Go fuck yourself : ' + err + hash);
         }
 
     });

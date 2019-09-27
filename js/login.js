@@ -114,7 +114,7 @@ const options = {
         socialLoginInstructions: '',
         socialSignUpInstructions: '',
         ssoEnabled: 'Authentification unique activée',
-        submitLabel: 'Envoyer',
+        submitLabel: 'Décollage',
         unrecoverableError: 'Un problème est survenu.<br />Contacte l’assistance technique.',
         usernameFormatErrorHint: 'Utilisez %d-%d lettres, chiffres et les caractères suivants: "_", ".", "+", "-"',
         usernameInputPlaceholder: 'ton nom d’utilisateur',

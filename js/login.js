@@ -146,20 +146,23 @@ lockPasswordless.show();
 $(document).ready(function () {
     webAuth.parseHash(window.location.hash, function (err, hash) {
         console.log(hash)
+        if (hash && hash.error) {
+            alert('There was an error: ' + hash.error + '\n' + hash.error_description);
+        } else if (hash && hash.id_token) {
+            //use id_token for retrieving profile.
+            localStorage.setItem('id_token', hash.id_token);
+            //retrieve profile
+            lockPasswordless.getProfile(hash.id_token, function (err, profile) {
+                if (err){
+                    //handle err
+                } else {
+                    //use user profile
+                }
+            });
+        } else {
+            alert('Go fuck yourself : ' + err);
+        }
+
     });
 
-    // if (hash && hash.error) {
-    //     alert('There was an error: ' + hash.error + '\n' + hash.error_description);
-    // } else if (hash && hash.id_token) {
-    //     //use id_token for retrieving profile.
-    //     localStorage.setItem('id_token', hash.id_token);
-    //     //retrieve profile
-    //     lockPasswordless.getProfile(hash.id_token, function (err, profile) {
-    //         if (err){
-    //             //handle err
-    //         } else {
-    //             //use user profile
-    //         }
-    //     });
-    // }
 });

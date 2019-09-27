@@ -143,22 +143,6 @@ const options = {
 const lockPasswordless = new Auth0LockPasswordless(config.clientID, config.domain, options);
 lockPasswordless.show();
 
-//parse hash on page load
-$(document).ready(function () {
-    console.log('hash :', window.location.hash);
-    webAuth.parseHash(function (err, authResult) {
-        console.log("authResult: ", authResult);
-        if (err) {
-            return console.log("err: ", err);
-        }
-
-        webAuth.client.userInfo(authResult.accessToken, function (err, user) {
-            console.log("user: ", user)
-        });
-    });
-});
-
-
 $(document).ready(function(){
     var hash = lockPasswordless.parseHash(window.location.hash);
 
@@ -168,7 +152,7 @@ $(document).ready(function(){
         //use id_token for retrieving profile.
         localStorage.setItem('id_token', hash.id_token);
         //retrieve profile
-        lock.getProfile(hash.id_token, function (err, profile) {
+        lockPasswordless.getProfile(hash.id_token, function (err, profile) {
             if (err){
                 //handle err
             } else {

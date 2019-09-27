@@ -63,7 +63,7 @@ const options = {
             magicLink: 'Je t\'ai envoyé un lien pour te connecter<br />à %s.',
             signUp: 'Merci de t\'être inscrit.'
         },
-        blankErrorHint: 'Ne peut être vide',
+        blankErrorHint: 'Faut remplir ici !!!',
         codeInputPlaceholder: 'ton code',
         databaseEnterpriseLoginInstructions: '',
         databaseEnterpriseAlternativeLoginInstructions: 'ou',
@@ -140,8 +140,6 @@ const options = {
     }
 };
 
-const lockPasswordless = new Auth0LockPasswordless(config.clientID, config.domain, options);
-lockPasswordless.show();
 
 $(document).ready(function () {
     webAuth.parseHash({hash: window.location.hash}, function (err, hash) {
@@ -152,7 +150,7 @@ $(document).ready(function () {
             //use id_token for retrieving profile.
             localStorage.setItem('id_token', hash.id_token);
             //retrieve profile
-            lockPasswordless.getProfile(hash.id_token, function (err, profile) {
+            webAuth.getProfile(hash.id_token, function (err, profile) {
                 if (err) {
                     //handle err
                 } else {

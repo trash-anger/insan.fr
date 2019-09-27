@@ -147,7 +147,7 @@ $(document).ready(function () {
     webAuth.parseHash({hash: window.location.hash}, function (err, hash) {
         console.log(hash)
         if (hash && hash.error) {
-            alert('There was an error: ' + hash.error + '\n' + hash.error_description);
+            // alert('There was an error: ' + hash.error + '\n' + hash.error_description);
         } else if (hash && hash.id_token) {
             //use id_token for retrieving profile.
             localStorage.setItem('id_token', hash.id_token);
@@ -160,7 +160,7 @@ $(document).ready(function () {
                 }
             });
         } else {
-            alert('Go fuck yourself : ' + err);
+            // alert('Go fuck yourself : ' + err);
             console.error(err)
         }
 

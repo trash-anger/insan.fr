@@ -8,7 +8,7 @@ const config = {
     responseType: 'token id_token',
     scope: "openid profile email https://mydomain/roles read:current_user create:current_user_metadata update:current_user_metadata"
 };
-const webAuth = new auth0.WebAuth(config);
+// const webAuth = new auth0.WebAuth(config);
 
 
 const options = {
@@ -130,7 +130,8 @@ const options = {
         mfaSubmitLabel: "S'identifier",
         mfaCodeErrorHint: 'Utilisez des numéros %d',
         showPassword: 'Montrer le mot de passe',
-        signUpTerms: "En t'inscrivant, tu acceptes mes <a href='/cgu' target='_new'>conditions d'utilisation</a> et ma <a href='/privacy    ' target='_new'>politique de confidentialité.</a>"
+        // signUpTerms: "En t'inscrivant, tu acceptes mes <a href='/cgu' target='_new'>conditions d'utilisation</a> et ma <a href='/privacy    ' target='_new'>politique de confidentialité.</a>"
+        signUpTerms: 'En t\'inscrivant, tu acceptes mes <a href="./cgu">conditions d\'utilisation</a> et ma <a href="./privacy">politique de confidentialité</a>.'
     },
     theme: {
         logo: 'https://ohmyz.sh/img/OMZLogo_BnW.png',
@@ -142,10 +143,10 @@ const options = {
 const lockPasswordless = new Auth0LockPasswordless(config.clientID, config.domain, options);
 lockPasswordless.show();
 
-$(document).ready(function () {
-    webAuth.parseHash(window.location.hash, function () {
-        console.log(hash)
-    });
+// $(document).ready(function () {
+//     webAuth.parseHash(window.location.hash, function () {
+//         console.log(hash)
+//     });
 
     // if (hash && hash.error) {
     //     alert('There was an error: ' + hash.error + '\n' + hash.error_description);
@@ -161,4 +162,5 @@ $(document).ready(function () {
     //         }
     //     });
     // }
-});
+// });
+//

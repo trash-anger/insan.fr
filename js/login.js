@@ -63,7 +63,7 @@ const options = {
             magicLink: 'Je t\'ai envoyé un lien pour te connecter<br />à %s.',
             signUp: 'Merci de t\'être inscrit.'
         },
-        blankErrorHint: 'Faut remplir ici !!!',
+        blankErrorHint: 'Ne peut être vide',
         codeInputPlaceholder: 'ton code',
         databaseEnterpriseLoginInstructions: '',
         databaseEnterpriseAlternativeLoginInstructions: 'ou',
@@ -140,17 +140,21 @@ const options = {
     }
 };
 
+const lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
+lockPasswordless.show();
+
+const webAuth = new auth0.WebAuth(config);
 
 $(document).ready(function () {
     webAuth.parseHash({hash: window.location.hash}, function (err, hash) {
         console.log(hash)
         if (hash && hash.error) {
-            // alert('There was an error: ' + hash.error + '\n' + hash.error_description);
+            alert('There was an error: ' + hash.error + '\n' + hash.error_description);
         } else if (hash && hash.id_token) {
             //use id_token for retrieving profile.
             localStorage.setItem('id_token', hash.id_token);
             //retrieve profile
-            webAuth.getProfile(hash.id_token, function (err, profile) {
+            lockPasswordless.getProfile(hash.id_token, function (err, profile) {
                 if (err) {
                     //handle err
                 } else {
@@ -158,7 +162,7 @@ $(document).ready(function () {
                 }
             });
         } else {
-            // alert('Go fuck yourself : ' + err);
+            alert('Go fuck yourself : ' + err);
             console.error(err)
         }
 

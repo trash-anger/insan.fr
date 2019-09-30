@@ -143,8 +143,6 @@ const options = {
 const lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
 lockPasswordless.show();
 
-const webAuth = new auth0.WebAuth(config);
-
 $(document).ready(function () {
     webAuth.parseHash({hash: window.location.hash}, function (err, hash) {
         console.log(hash)

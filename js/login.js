@@ -141,6 +141,8 @@ const options = {
 };
 
 const lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
+console.log(lockPasswordless)
+localStorage.setItem('state', lockPasswordless.state);
 lockPasswordless.show();
 
 $(document).ready(function () {

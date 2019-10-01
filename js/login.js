@@ -142,13 +142,11 @@ const options = {
 
 const lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsVKm34', 'insan.eu.auth0.com', options);
 console.log(lockPasswordless)
+lockPasswordless.show();
 lockPasswordless.checkSession({}, function(err, authResult) {
     console.log(authResult.state)
     localStorage.setItem('state', authResult.state);
-
 });
-
-lockPasswordless.show();
 
 $(document).ready(function () {
     webAuth.parseHash({hash: window.location.hash}, function (err, hash) {

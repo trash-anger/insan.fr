@@ -144,7 +144,7 @@ const lockPasswordless = new Auth0LockPasswordless('JTRj7z5QVxX3uqRqVI8X9GuhOYsV
 console.log(lockPasswordless)
 lockPasswordless.show();
 lockPasswordless.checkSession({}, function(err, authResult) {
-    console.log(authResult.state)
+    console.log(authResult)
     localStorage.setItem('state', authResult.state);
 });
 
